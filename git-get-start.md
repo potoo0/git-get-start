@@ -2,7 +2,7 @@ Git 分布式版本控制系统，可分为三个区域：工作区、暂存区�
 
 工作区(working tree) $\xRightarrow{add}$ 暂存区(stage, index) $\xRightarrow{commit}$ 归档区 $\xRightarrow{push}$ 远程仓库
 
-add 将工作区的文件提交到暂存区，commit 是将暂存区的数次提交存入本地归档区，此时已经完成了版本控制，但通常还将其通过 `push` 上传到远程仓库，如 github。另外文件夹的 .git 不属于工作区，其是版本库（暂存区和归档区）。
+add 将工作区的文件提交到暂存区，commit 是将暂存区的数次提交存入本地归档区，此时已经完成了版本控制，但通常还将其通过 `push` 上传到远程仓库，如 github。
 
 查看 git 官方帮助文档: `git help <command>`，如: `git help restore`，会通过浏览器打开 git 安装目录的 html 文档。官方帮助文档是英文的，这是网上翻译的中文文档：[Git 教程](https://www.yiibai.com/git)。
 
@@ -13,7 +13,7 @@ add 将工作区的文件提交到暂存区，commit 是将暂存区的数次提
 1. `git init`: 初始化工作区，创建 master 分支;
 2. `git add .`: 将此目录下所有文件均提交到暂存区;
 3. `git commit -m message`: 添加到暂存区，并附带本次提交的描述
-4. `git remote add origin https://github.com/xxx/xxx.git`: 添加远程仓库，名称为 origin，远程地址为 xxx;
+4. `git remote add origin <remoteUrl>`: 添加远程仓库，名称为 origin，远程地址为 xxx;
 5. `git push -u origin master`: 将本地归档区内容上传至上面指定的 origin 的远程仓库，*-u* 参数用来指定默认远程主机，详细见下
 
 后续工作区文件有更改或者删除时，可以直接将这些变化提交到归档区: `git commit -am "message"`。
@@ -44,7 +44,7 @@ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(ye
 
 ## 3. 版本回退
 
-版本回退之前需要归档的版本号(*commit id*)，git 中版本号是一串 SHA1 计算的消息摘要，通过  查看，或者在 git 中还有一个 HEAD 指针，指向当前版本，上版本为 *HEAD^*，上上版本为 *HEAD^^*，前10个版本为 *HEAD~10*，下面指令均可使用 HEAD 指代版本号。
+版本回退之前需要归档的版本号(*commit id*, git 中版本号是一串 SHA1 计算的消息摘要)，通过上面的 log 查看。在 git 中还有一个 HEAD 指针，指向当前版本，上版本为 *HEAD^*，上上版本为 *HEAD^^*，前10个版本为 *HEAD~10*，下面指令均可使用 HEAD 指代版本号。
 
 涉及工作区回退要注意，如果工作区内容有更改，但未 add 或者 commit，则一旦被回退这些更改就会被丢弃，无法找回。
 
