@@ -28,6 +28,7 @@ add 将工作区的文件提交到暂存区，commit 是将暂存区的数次提
 - `git diff --cached`: 查看暂存区与归档区差别;
 - `git diff HEAD`: 查看工作区与归档区差别;
 - `git diff branch1 branch2`: 查看两个分支差别;
+- `git diff master origin/master`: 查看本地 master 与远程仓库 master 区别
 
 查看提交日志: `git log`，通过参数看简洁日志: `git log --pretty=oneline`，其支持定制颜色、长度等。另外网上查找的比较美观的日志:
 
